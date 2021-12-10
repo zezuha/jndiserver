@@ -20,7 +20,6 @@ public class StandaloneJNDIServer implements Callable<Object> {
 
     @SuppressWarnings("unchecked")
     private void setup() throws Exception {
-
         //configure the initial factory
         //**in John´s code we did not have this**
         System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");
@@ -36,14 +35,7 @@ public class StandaloneJNDIServer implements Callable<Object> {
         _server.setBindAddress(InetAddress.getLocalHost().getHostName());
         _server.start();
 
-    /* PSM I do not need that:
-        //configure the environment for initial context
-        final Hashtable _properties = new Hashtable();
-        _properties.put(Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");
-        _properties.put(Context.PROVIDER_URL,            "jnp://10.10.10.200:5400");
-    */
-
-        //bind a name
+        // bind under names
         final Context _context = new InitialContext();
         _context.bind("jdbc", "myJDBC");
         _context.bind("kill", Evil.class);
