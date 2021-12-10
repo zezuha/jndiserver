@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import org.jnp.server.Main;
 import org.jnp.server.NamingBeanImpl;
 
+
 public class StandaloneJNDIServer implements Callable<Object> {
 
 public Object call() throws Exception {
@@ -47,8 +48,8 @@ private void setup() throws Exception {
     //bind a name
     final Context _context = new InitialContext();
     _context.bind("jdbc", "myJDBC");
+    _context.bind("kill", Evil.class);
     _context.bind("clazz", String.class);
-
 }
 
 public static void main(String...args){

@@ -32,9 +32,13 @@ public static void main(String[] args) {
         System.out.println("Lookup RESULT: " + _context.lookup("java:jdbc"));
 
 
+        System.out.println("Lookup RESULT: " + _context.lookup("java:kill"));
+
+
         System.out.println("Lookup RESULT: " + _context.lookup("java:clazz"));
         Object x = _context.lookup("java:clazz");
         System.out.println("Lookup RESULT: " + x.getClass().getName());
+
 
     }catch(Exception _e){
         _e.printStackTrace();
